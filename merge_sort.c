@@ -57,7 +57,17 @@ int split_array(int* arr)
 
 int comp_merge(int* arr_L,int* arr_R)
 {
+	int i=0,j=0,lowest;
 	//1.Compare Left and right array
-	for(int i=0;i<)
+	while(i<)
+	{
+		//Sorting in ascending order
+		if(*(arr_L+i) < *(arr_R+j))
+			lowest=*(arr_L+i);
+		else
+			lowest=*(arr_R+j);
+		i++;
+		j++;
+	}
 	//2.Merge Left and Right Array in order accordingly
 }
