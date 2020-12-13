@@ -62,7 +62,7 @@ int split_array(int* arr,int sizeofarr)
 	}
 	else if(mid==0)
 	{
-		printf("returning back to call from arr[0]=%d\n",arr[0]);
+		//printf("returning back to call from arr[0]=%d\n",arr[0]);
 		return 0;
 	}
 	sleep(1);
@@ -87,6 +87,8 @@ int comp_merge(int* arr_L,int* arr_R,int arr_Lsize,int arr_Rsize)
 	int i=0,j=0,k=0;
 	int *remrgd_arr;
 	remrgd_arr=(int*)malloc(sizeof(int)*(arr_Lsize+arr_Rsize));
+	printf("================START=================\n");
+	printf("In comp_merge=%d\n",cnt);
 	printf("arr_Lsize=%d\narr_Rsize=%d\n",arr_Lsize,arr_Rsize);
 	//1.Compare Left and right array
 	while(i<arr_Lsize && j<arr_Rsize)
@@ -105,21 +107,23 @@ int comp_merge(int* arr_L,int* arr_R,int arr_Lsize,int arr_Rsize)
 		k++;
 	}
 		//Whatever is left put in remrgd array only after one of the array's are finished
-	while(j<arr_Rsize)
-	{
-		*(remrgd_arr+k)=*(arr_R+j);
-		k++;
-		j++;
-	}
 	while(i<arr_Lsize)
 	{
 		*(remrgd_arr+k)=*(arr_L+i);
 		k++;
 		i++;
 	}
+	while(j<arr_Rsize)
+	{
+		*(remrgd_arr+k)=*(arr_R+j);
+		k++;
+		j++;
+	}
 	cnt++;
-	printf("In comp_merge=%d\n",cnt);
+	printf("COMP & merge done\n");
 	display_sorted_arr(remrgd_arr,arr_Lsize+arr_Rsize);
+	printf("\n");
+	printf("================END=================\n");
 	printf("\n");
 	free(remrgd_arr);
 }
