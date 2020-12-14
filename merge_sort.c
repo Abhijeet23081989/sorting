@@ -76,7 +76,60 @@ int split_array(int* arr,int sizeofarr)
 	
 	split_array(arr_L,arr_Lsize);
 	split_array(arr_R,arr_Rsize);
-	comp_merge(arr_L,arr_R,arr_Lsize,arr_Rsize);
+	//comp_merge(arr_L,arr_R,arr_Lsize,arr_Rsize);
+	static int cnt=0;
+	int *remrgd_arr;
+	int sora=arr_Lsize+arr_Rsize;
+	remrgd_arr=(int*)malloc(sizeof(int)*sora);
+	//if(arr_Lsize>=2 && arr_Rsize>=2)
+	//{
+	//printf("================START=================\n");
+	//printf("In comp_merge=%d\n",cnt);
+	printf("arr_Lsize=%d\narr_Rsize=%d\n",arr_Lsize,arr_Rsize);
+	//}
+	//1.Compare Left and right array
+       	i=0;j=0;int k=0;
+	while(i<arr_Lsize && j<arr_Rsize)
+	{
+		//Compare arr_L & arr_R and put lowest element in remrgd_arr
+		if(arr_L[i] < arr_R[j])
+		{
+			remrgd_arr[k]=arr_L[i];
+			i++;
+		}
+		else
+		{
+			remrgd_arr[k]=arr_R[j];
+			j++;
+		}
+		k++;
+
+	}
+	display_sorted_arr(remrgd_arr,sora);
+	printf("\n");
+		//Whatever is left put in remrgd array only after one of the array's are finished
+	while(i<arr_Lsize)
+	{
+		remrgd_arr[k]=arr_L[i];
+		k++;
+		i++;
+	}
+	while(j<arr_Rsize)
+	{
+		remrgd_arr[k]=arr_R[j];
+		k++;
+		j++;
+	}
+	cnt++;
+	/*if(arr_Lsize>=2 && arr_Rsize>=2)
+	{
+	printf("COMP & merge done\n");*/
+	display_sorted_arr(remrgd_arr,sora);
+	printf("\n");
+	//printf("================END=================\n");
+	printf("\n");
+	//}
+	free(remrgd_arr);
 	free(arr_L);
 	free(arr_R);
 }
@@ -94,7 +147,7 @@ int comp_merge(int* arr_L,int* arr_R,int arr_Lsize,int arr_Rsize)
 	while(i<arr_Lsize && j<arr_Rsize)
 	{
 		//Compare arr_L & arr_R and put lowest element in remrgd_arr
-		if(*(arr_L+i)<=*(arr_R+j))
+		if(*(arr_L+i)<*(arr_R+j))
 		{
 			*(remrgd_arr+k)=*(arr_L+i);
 			i++;
