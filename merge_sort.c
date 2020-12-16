@@ -16,13 +16,15 @@ int main()
 	//4-> Sort the single elements in ascending or descending order(as per requirement)
 	//5-> Remerge the sorted elements untill complete array is formed
 	
-	int* arr;
-	int i,sizeofarr=9;
+	int* arr=NULL;
+	int i,sizeofarr;
+	printf("Enter size of of array\n");
+		scanf("%d",&sizeofarr);
 	arr=(int*)malloc(sizeof(int)*sizeofarr);
-	//printf("Enter Nine Elements\n");
-	//for(i=0;i<9;i++)
-	//	scanf("%d",&arr[i]);
-	*(arr+0)=9;
+	printf("Enter %d Elements\n",sizeofarr);
+	for(i=0;i<sizeofarr;i++)
+		scanf("%d",&arr[i]);
+	/**(arr+0)=9;
 	*(arr+1)=3;
 	*(arr+2)=12;
 	*(arr+3)=1;
@@ -30,7 +32,7 @@ int main()
 	*(arr+5)=13;
 	*(arr+6)=2;
 	*(arr+7)=8;
-	*(arr+8)=6;
+	*(arr+8)=6;*/
 	display_sorted_arr(arr,sizeofarr);
 	split_array(arr,sizeofarr);
 }
@@ -41,7 +43,6 @@ int* split_array(int* arr,int sizeofarr)
 	int arr_Lsize=mid,arr_Rsize=sizeofarr-mid;
 	int *sorted_arr_L,*sorted_arr_R,*remrgd_arr;
 	sorted_arr_L=NULL;sorted_arr_R=NULL;remrgd_arr=NULL;
-	//printf("mid=%d\n",mid);
 	int i,j;
 	int* arr_L,*arr_R;
 	if(mid!=0)
